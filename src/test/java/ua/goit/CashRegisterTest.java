@@ -30,7 +30,7 @@ public class CashRegisterTest {
         Assert.assertTrue("calculateProductsAmountTest by firstCheck size", firstCheck.size() == 4);
         Assert.assertTrue("calculateProductsAmountTest by firstCheck size", firstCheck.get("A") == 3);
 
-        Assert.assertTrue("calculateProductsAmountTest by tripleCheck size", secondCheck.size() == 3);
+        Assert.assertEquals("calculateProductsAmountTest", 3, secondCheck.size());;
         Assert.assertTrue("calculateProductsAmountTest by tripleCheck size", secondCheck.get("B") == 2);
 
         Assert.assertTrue("calculateProductsAmountTest by thirdCheck size", thirdCheck.size() == 0);
