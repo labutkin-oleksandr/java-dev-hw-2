@@ -18,15 +18,20 @@ public class CashRegisterTest {
         warehouse.put("D", new Product(0.75, 0, 0.00 ));
         warehouse.put("E", new Product(1.50, 2, 0.00 ));
 
+        //Warehouse is internal dependency for CashRegister. We have to mock all calls to the class
+        //using Mockito instead of real object
         shoppingCart = new CashRegister(new Warehouse(warehouse));
     }
 
     @Test
     public void calculateProductsAmountTest() {
+        //one test should contain only one operation
+        //for different cases you have to create new tests
         HashMap<String, Integer> firstCheck = shoppingCart.calculateProductsAmount("ABCDABA");
         HashMap<String, Integer> secondCheck = shoppingCart.calculateProductsAmount("AaDBdb");
         HashMap<String, Integer> thirdCheck = shoppingCart.calculateProductsAmount("");
 
+        //better to use just assertEquals. We should understand what we test from the method name
         Assert.assertTrue("calculateProductsAmountTest by firstCheck size", firstCheck.size() == 4);
         Assert.assertTrue("calculateProductsAmountTest by firstCheck size", firstCheck.get("A") == 3);
 
